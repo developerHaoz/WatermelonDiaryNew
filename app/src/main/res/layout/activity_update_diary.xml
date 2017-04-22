@@ -1,132 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
     >
 
     <include
         layout="@layout/part_common_title"
         />
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:layout_weight="1"
-       android:paddingTop="20dp"
-       android:paddingBottom="20dp"
-       android:paddingLeft="20dp"
-       >
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:orientation="vertical"
-           android:paddingRight="20dp"
-           >
+    <TextView
+        android:id="@+id/update_diary_tv_tag"
+        android:layout_width="0.001dp"
+        android:layout_height="0.001dp"
+        android:text="sdafaf"
+        />
 
-           <TextView
-               android:id="@+id/update_diary_tv_date"
-               android:layout_width="match_parent"
-               android:layout_height="30dp"
-               android:gravity="center_vertical"
-               android:paddingRight="5dp"
-               android:text="今天，2017年01月19日"
-               android:textSize="15sp"
-               />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            >
 
-           <EditText
-               android:id="@+id/update_diary_et_title"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:background="@drawable/shape_add_diary_title"
-               android:enabled="true"
-               android:gravity="top"
-               android:maxLines="10"
-               android:minLines="8"
-               android:paddingLeft="20dp"
-               android:paddingRight="20dp"
-               android:scrollbars="vertical"
-               />
-
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="20dp"/>
-
-           <com.lizehao.watermelondiarynew.widget.LinedEditText
-               android:id="@+id/update_diary_et_content"
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight="1"
-               android:background="@drawable/shape_add_diary_title"
-               android:enabled="true"
-               android:gravity="top"
-               android:lineSpacingExtra="5dp"
-               android:maxLines="10"
-               android:minLines="8"
-               android:paddingLeft="20dp"
-               android:paddingRight="20dp"
-               android:paddingTop="10dp"
-               android:scrollbars="vertical"
-               android:textSize="17sp"
-               />
-
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="95dp">
+            <TextView
+                android:id="@+id/update_diary_tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingRight="5dp"
+                android:text="今天，2017年01月19日"
+                android:textSize="15sp"
+                />
 
 
-           </LinearLayout>
 
-       </LinearLayout>
+            <EditText
+                android:id="@+id/update_diary_et_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/shape_add_diary_title"
+                android:enabled="true"
+                android:gravity="top"
+                android:maxLines="10"
+                android:minLines="8"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:scrollbars="vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <com.lizehao.watermelondiarynew.widget.LinedEditText
+                android:id="@+id/update_diary_et_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_add_diary_title"
+                android:enabled="true"
+                android:gravity="top"
+                android:lineSpacingExtra="5dp"
+                android:maxLines="10"
+                android:minLines="8"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:scrollbars="vertical"
+                android:textSize="17sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp">
 
 
-       <cc.trity.floatingactionbutton.FloatingActionsMenu
-           android:id="@+id/right_labels"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
-           android:layout_alignParentLeft="true"
-           android:layout_alignParentStart="true"
-           app:fab_expandDirection="right"
-           app:fab_addButtonSize="mini"
-           >
+            </LinearLayout>
 
-           <cc.trity.floatingactionbutton.FloatingActionButton
-               android:id="@+id/update_diary_fab_back"
-               android:layout_width="40dp"
-               android:layout_height="40dp"
-               app:fab_size="normal"
-               app:fab_icon = "@drawable/delete_new"
-               app:fab_colorNormal="#c8180e"
-               />
+        </LinearLayout>
 
-           <cc.trity.floatingactionbutton.FloatingActionButton
-               android:id="@+id/update_diary_fab_add"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/save"
-               app:fab_size="normal"
-               app:fab_title="FAB 2"
-               app:fab_icon = "@drawable/save_new"
-               app:fab_colorNormal="#24d63c"
 
-               />
+        <cc.trity.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/right_labels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:fab_expandDirection="right"
+            app:fab_addButtonSize="mini"
+            >
 
-           <cc.trity.floatingactionbutton.FloatingActionButton
-               android:id="@+id/update_diary_fab_delete"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/delete"
-               app:fab_colorNormal="#d92410"
-               app:fab_icon = "@drawable/back_new"
-               app:fab_size="normal"
-               app:fab_title="FAB 2"
+            <cc.trity.floatingactionbutton.FloatingActionButton
+                android:id="@+id/update_diary_fab_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:fab_size="normal"
+                app:fab_icon = "@drawable/delete_new"
+                app:fab_colorNormal="#ee0d18"
+                />
 
-               />
+            <cc.trity.floatingactionbutton.FloatingActionButton
+                android:id="@+id/update_diary_fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/save"
+                app:fab_size="normal"
+                app:fab_title="FAB 2"
+                app:fab_icon = "@drawable/save_new"
+                app:fab_colorNormal="#40a30a"
 
-       </cc.trity.floatingactionbutton.FloatingActionsMenu>
-   </RelativeLayout>
+                />
 
-    
+            <cc.trity.floatingactionbutton.FloatingActionButton
+                android:id="@+id/update_diary_fab_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/delete"
+                app:fab_colorNormal="#e33e46"
+                app:fab_icon = "@drawable/back_new"
+                app:fab_size="normal"
+                app:fab_title="FAB 2"
+
+                />
+
+        </cc.trity.floatingactionbutton.FloatingActionsMenu>
+    </RelativeLayout>
+
+
 </LinearLayout>

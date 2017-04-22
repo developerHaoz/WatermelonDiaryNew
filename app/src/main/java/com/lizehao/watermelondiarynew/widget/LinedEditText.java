@@ -18,31 +18,26 @@ import android.widget.EditText;
 public class LinedEditText extends EditText {
 
     public LinedEditText(Context context) {
-
         super(context);
         initPaint();
-
     }
 
     public LinedEditText(Context context, AttributeSet attrs) {
-
         super(context, attrs);
         initPaint();
-
     }
 
     public LinedEditText(Context context, AttributeSet attrs, int defStyle) {
-
         super(context, attrs, defStyle);
         initPaint();
-
     }
 
     private void initPaint() {
 
     }
 
-    @Override protected void onDraw(Canvas canvas) {
+    @Override
+    protected void onDraw(Canvas canvas) {
 
         Paint mPaint = new Paint();
 
@@ -50,7 +45,7 @@ public class LinedEditText extends EditText {
 
         mPaint.setColor(Color.LTGRAY);
 
-        PathEffect effects = new DashPathEffect(new float[]{5,5,5,5},5);
+        PathEffect effects = new DashPathEffect(new float[]{5, 5, 5, 5}, 5);
 
         mPaint.setPathEffect(effects);
 
@@ -72,17 +67,17 @@ public class LinedEditText extends EditText {
 
         int spcingHeight = (int) getLineSpacingExtra();
 
-        int count = (height-paddingTop-paddingBottom) / lineHeight;
+        int count = (height - paddingTop - paddingBottom) / lineHeight;
 
         for (int i = 0; i < count; i++) {
 
-            int baseline = lineHeight * (i+1) + paddingTop - spcingHeight/2 ;
+            int baseline = lineHeight * (i + 1) + paddingTop - spcingHeight / 2;
 
-            canvas.drawLine(paddingLeft, (int)(baseline * 1.0), right-paddingRight * 2, (int)(baseline * 1.0), mPaint);
+            canvas.drawLine(paddingLeft, (int) (baseline * 1.0), right - paddingRight * (int) 1.8, (int) (baseline * 1.0), mPaint);
 
         }
         super.onDraw(canvas);
 
     }
-
 }
+

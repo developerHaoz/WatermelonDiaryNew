@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/main_background"
     android:orientation="vertical"
     android:paddingBottom="10dp"
     tools:context=".ui.MainActivity"
@@ -34,7 +34,7 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:paddingRight="10dp"
-                      android:background="@color/white"
+                      android:background="#ffffff"
             >
 
 
@@ -130,7 +130,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:src="@drawable/add"
-        app:backgroundTint="#e83e18"
+        app:backgroundTint="#ee722f"
         app:borderWidth="0dp"
         app:elevation="6dp"
         app:fabSize="normal"

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * 用于修改标题栏的颜色
+ *
  * Created by 李 on 2017/1/26.
  */
 public class StatusBarCompat

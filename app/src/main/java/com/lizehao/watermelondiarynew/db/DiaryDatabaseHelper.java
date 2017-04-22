@@ -13,6 +13,7 @@ public class DiaryDatabaseHelper extends SQLiteOpenHelper {
             + "id integer primary key autoincrement, "
             + "date text, "
             + "title text, "
+            + "tag text, "
             + "content text)";
 
     private Context mContext;

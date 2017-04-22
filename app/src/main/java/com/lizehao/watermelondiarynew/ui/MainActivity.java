@@ -21,10 +21,10 @@ import com.lizehao.watermelondiarynew.R;
 import com.lizehao.watermelondiarynew.bean.DiaryBean;
 import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
 import com.lizehao.watermelondiarynew.event.StartUpdateDiaryEvent;
+import com.lizehao.watermelondiarynew.utils.AppManager;
 import com.lizehao.watermelondiarynew.utils.GetDate;
 import com.lizehao.watermelondiarynew.utils.SpHelper;
 import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
-import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static String IS_WRITE = "true";
 
+    private int mEditPosition = -1;
+
     /**
      * 标识今天是否已经写了日记
      */
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppManager.getAppManager().addActivity(this);
         ButterKnife.bind(this);
         StatusBarCompat.compat(this, Color.parseColor("#161414"));
         mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
@@ -119,13 +122,8 @@ public class MainActivity extends AppCompatActivity {
             do {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String dateSystem = GetDate.getDate().toString();
-                Logger.d("一级");
-                Logger.d("date1" + date);
-                Logger.d("date2" + GetDate.getDate());
                 if (date.equals(dateSystem)) {
-                    Logger.d("二级");
                     mMainLlMain.removeView(mItemFirst);
-                    Logger.d("三级");
                     break;
                 }
             } while (cursor.moveToNext());
@@ -137,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String title = cursor.getString(cursor.getColumnIndex("title"));
                 String content = cursor.getString(cursor.getColumnIndex("content"));
-                mDiaryBeanList.add(new DiaryBean(date, title, content));
+                String tag = cursor.getString(cursor.getColumnIndex("tag"));
+                mDiaryBeanList.add(new DiaryBean(date, title, content, tag));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -154,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
     public void startUpdateDiaryActivity(StartUpdateDiaryEvent event) {
         String title = mDiaryBeanList.get(event.getPosition()).getTitle();
         String content = mDiaryBeanList.get(event.getPosition()).getContent();
-        UpdateDiaryActivity.startActivity(this, title, content);
+        String tag = mDiaryBeanList.get(event.getPosition()).getTag();
+        UpdateDiaryActivity.startActivity(this, title, content, tag);
 
     }
 
@@ -167,5 +167,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.main_fab_enter_edit)
     public void onClick() {
         AddDiaryActivity.startActivity(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AppManager.getAppManager().AppExit(this);
     }
 }

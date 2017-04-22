@@ -82,39 +82,39 @@
 
 
         <cc.trity.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/right_labels"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        app:fab_expandDirection="right"
-        app:fab_colorNormal="#f0f01a"
-        app:fab_icon = "@drawable/menu"
-        app:fab_addButtonSize="mini"
+            android:id="@+id/right_labels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            app:fab_expandDirection="right"
+            app:fab_colorNormal="#f0f01a"
+            app:fab_icon = "@drawable/menu"
+            app:fab_addButtonSize="mini"
             >
 
             <cc.trity.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_diary_fab_back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:fab_colorNormal="#24d63c"
-            app:fab_size="normal"
-            app:fab_icon = "@drawable/save_new"
+                android:id="@+id/add_diary_fab_back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:fab_colorNormal="#24d63c"
+                app:fab_size="normal"
+                app:fab_icon = "@drawable/save_new"
                 />
 
             <cc.trity.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_diary_fab_add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/save"
-            app:fab_size="normal"
-            app:fab_title="FAB 2"
-            app:fab_colorNormal="#e41c1c"
-            app:fab_icon = "@drawable/back_new"
+                android:id="@+id/add_diary_fab_add"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/save"
+                app:fab_size="normal"
+                app:fab_title="FAB 2"
+                app:fab_colorNormal="#e41c1c"
+                app:fab_icon = "@drawable/back_new"
                 />
 
-                />
+            />
 
 
         </cc.trity.floatingactionbutton.FloatingActionsMenu>

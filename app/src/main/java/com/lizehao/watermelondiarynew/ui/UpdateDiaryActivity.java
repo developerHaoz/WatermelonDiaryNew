@@ -1,6 +1,5 @@
 package com.lizehao.watermelondiarynew.ui;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 
 import com.lizehao.watermelondiarynew.R;
 import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
+import com.lizehao.watermelondiarynew.utils.AppManager;
 import com.lizehao.watermelondiarynew.utils.GetDate;
 import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
 import com.lizehao.watermelondiarynew.widget.LinedEditText;
@@ -56,13 +56,16 @@ public class UpdateDiaryActivity extends AppCompatActivity {
     ImageView mCommonIvBack;
     @Bind(R.id.common_iv_test)
     ImageView mCommonIvTest;
+    @Bind(R.id.update_diary_tv_tag)
+    TextView mTvTag;
 
     private DiaryDatabaseHelper mHelper;
 
-    public static void startActivity(Context context, String title, String content) {
+    public static void startActivity(Context context, String title, String content, String tag) {
         Intent intent = new Intent(context, UpdateDiaryActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("content", content);
+        intent.putExtra("tag", tag);
         context.startActivity(intent);
     }
 
@@ -70,6 +73,7 @@ public class UpdateDiaryActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_diary);
+        AppManager.getAppManager().addActivity(this);
         ButterKnife.bind(this);
         mHelper = new DiaryDatabaseHelper(this, "Diary.db", null, 1);
         initTitle();
@@ -79,6 +83,8 @@ public class UpdateDiaryActivity extends AppCompatActivity {
         mUpdateDiaryTvDate.setText("今天，" + GetDate.getDate());
         mUpdateDiaryEtTitle.setText(intent.getStringExtra("title"));
         mUpdateDiaryEtContent.setText(intent.getStringExtra("content"));
+        mTvTag.setText(intent.getStringExtra("tag"));
+
 
 
     }
@@ -101,13 +107,14 @@ public class UpdateDiaryActivity extends AppCompatActivity {
             case R.id.update_diary_et_content:
                 break;
             case R.id.update_diary_fab_back:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(this);
                 alertDialogBuilder.setMessage("确定要删除该日记吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        String title = mUpdateDiaryEtTitle.getText().toString();
+//                        String title = mUpdateDiaryEtTitle.getText().toString();
+                        String tag = mTvTag.getText().toString();
                         SQLiteDatabase dbDelete = mHelper.getWritableDatabase();
-                        dbDelete.delete("Diary", "title = ?", new String[]{title});
+                        dbDelete.delete("Diary", "tag = ?", new String[]{tag});
                         MainActivity.startActivity(UpdateDiaryActivity.this);
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -135,5 +142,11 @@ public class UpdateDiaryActivity extends AppCompatActivity {
 
     @OnClick(R.id.common_tv_title)
     public void onClick() {
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MainActivity.startActivity(this);
     }
 }

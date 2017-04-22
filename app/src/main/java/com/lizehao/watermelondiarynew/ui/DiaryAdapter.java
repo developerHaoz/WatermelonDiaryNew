@@ -27,6 +27,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private List<DiaryBean> mDiaryBeanList;
+    private int mEditPosition = -1;
 
     public DiaryAdapter(Context context, List<DiaryBean> mDiaryBeanList){
         mContext = context;
@@ -49,15 +50,23 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryViewHol
         holder.mTvTitle.setText(mDiaryBeanList.get(position).getTitle());
         holder.mTvContent.setText("       " + mDiaryBeanList.get(position).getContent());
         holder.mIvEdit.setVisibility(View.INVISIBLE);
+        if(mEditPosition == position){
+            holder.mIvEdit.setVisibility(View.VISIBLE);
+        }else {
+            holder.mIvEdit.setVisibility(View.GONE);
+        }
         holder.mLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (holder.mIvEdit.getVisibility() == View.INVISIBLE) {
-                    holder.mIvEdit.setVisibility(View.VISIBLE);
+                if(holder.mIvEdit.getVisibility() == View.VISIBLE){
+                    holder.mIvEdit.setVisibility(View.GONE);
                 }else {
-                    holder.mIvEdit.setVisibility(View.INVISIBLE);
-
+                    holder.mIvEdit.setVisibility(View.VISIBLE);
                 }
+                if(mEditPosition != position){
+                    notifyItemChanged(mEditPosition);
+                }
+                mEditPosition = position;
             }
         });
 

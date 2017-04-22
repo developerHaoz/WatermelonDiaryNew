@@ -1,6 +1,5 @@
 package com.lizehao.watermelondiarynew.ui;
 
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.lizehao.watermelondiarynew.R;
 import com.lizehao.watermelondiarynew.db.DiaryDatabaseHelper;
+import com.lizehao.watermelondiarynew.utils.AppManager;
 import com.lizehao.watermelondiarynew.utils.GetDate;
 import com.lizehao.watermelondiarynew.utils.StatusBarCompat;
 import com.lizehao.watermelondiarynew.widget.LinedEditText;
@@ -33,7 +34,6 @@ import cc.trity.floatingactionbutton.FloatingActionsMenu;
  * Created by 李 on 2017/1/26.
  */
 public class AddDiaryActivity extends AppCompatActivity {
-
 
     @Bind(R.id.add_diary_tv_date)
     TextView mAddDiaryTvDate;
@@ -75,13 +75,13 @@ public class AddDiaryActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary);
+        AppManager.getAppManager().addActivity(this);
         ButterKnife.bind(this);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         Intent intent = getIntent();
         mAddDiaryEtTitle.setText(intent.getStringExtra("title"));
         StatusBarCompat.compat(this, Color.parseColor("#161414"));
-
 
         mCommonTvTitle.setText("添加日记");
         mAddDiaryTvDate.setText("今天，" + GetDate.getDate());
@@ -101,6 +101,7 @@ public class AddDiaryActivity extends AppCompatActivity {
                 break;
             case R.id.add_diary_fab_back:
                 String date = GetDate.getDate().toString();
+                String tag = String.valueOf(System.currentTimeMillis());
                 String title = mAddDiaryEtTitle.getText().toString() + "";
                 String content = mAddDiaryEtContent.getText().toString() + "";
                 if (!title.equals("") || !content.equals("")) {
@@ -109,6 +110,7 @@ public class AddDiaryActivity extends AppCompatActivity {
                     values.put("date", date);
                     values.put("title", title);
                     values.put("content", content);
+                    values.put("tag", tag);
                     db.insert("Diary", null, values);
                     values.clear();
                 }
@@ -142,6 +144,12 @@ public class AddDiaryActivity extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MainActivity.startActivity(this);
     }
 }
 
