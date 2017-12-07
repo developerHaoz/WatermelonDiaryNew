@@ -38,7 +38,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Bind(R.id.common_iv_back)
     ImageView mCommonIvBack;
     @Bind(R.id.common_tv_title)
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
      * 标识今天是否已经写了日记
      */
     private boolean isWrite = false;
+    private static TextView mTvTest;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -100,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
         initTitle();
         mMainRvShowDiary.setLayoutManager(new LinearLayoutManager(this));
         mMainRvShowDiary.setAdapter(new DiaryAdapter(this, mDiaryBeanList));
-
+        mTvTest = new TextView(this);
+        mTvTest.setText("hello world");
     }
 
     private void initTitle() {

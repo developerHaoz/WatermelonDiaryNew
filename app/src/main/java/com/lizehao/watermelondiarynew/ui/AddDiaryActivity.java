@@ -141,7 +141,6 @@ public class AddDiaryActivity extends AppCompatActivity {
                 }else{
                     MainActivity.startActivity(this);
                 }
-
                 break;
         }
     }

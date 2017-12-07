@@ -7,14 +7,15 @@ public class StartUpdateDiaryEvent {
 
     private int position;
 
-    public StartUpdateDiaryEvent(int position){
+    public StartUpdateDiaryEvent(int position) {
         this.position = position;
     }
 
-    public void setPosition(int position){
+    public void setPosition(int position) {
         this.position = position;
     }
-    public int getPosition(){
+
+    public int getPosition() {
         return position;
     }
 }
