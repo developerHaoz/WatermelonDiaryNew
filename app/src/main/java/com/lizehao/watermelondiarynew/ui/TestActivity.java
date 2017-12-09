@@ -49,9 +49,6 @@ public class TestActivity extends AppCompatActivity {
             case R.id.button3:
                 Log.d(TAG, "onViewClicked: You Click button3");
                 break;
-            case R.id.button4:
-                Log.d(TAG, "onViewClicked: You Click button4");
-                break;
         }
     }
 }
